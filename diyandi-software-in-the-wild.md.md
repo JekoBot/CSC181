@@ -1,42 +1,42 @@
 # Software in the Wild: Improving the Diyandi Experience Through Software
 
-> **Name:** [Write your full name]  
-> **Section:** [Write your section]  
-> **Date submitted:** [YYYY-MM-DD]
+> **Name:** Jeric I Balos  
+> **Section:** CCC181 CS3A  
+> **Date submitted:** 2026-09-30
 
 ---
 
 ## 1. User group
 
 **Who are you designing for?**  
-[Identify one specific group connected to Diyandi Festival sa Iligan. Examples: local residents, students, visitors, tourists, event attendees, performers, vendors, event organizers, safety personnel, senior citizens, persons with disabilities, parents, or local businesses.]
+Visitors and first-time tourists attending the Diyandi Festival sa Iligan.  
 
 **Why might this group need support during Diyandi?**  
-[Briefly explain the group’s situation, goals, or needs.]
+Visitors often walk through festival grounds without knowing what specific cultural rituals, performances, or historical exhibits are taking place around them.
 
 ---
 
 ## 2. Situation or need
 
 **What is this group trying to do during Diyandi?**  
-[Examples: Find events, receive schedule updates, locate a venue, navigate traffic, identify accessible facilities, promote products, coordinate performers, or report an issue.]
+Follow a self-guided walking map of key festival sites while understanding the cultural meaning and history behind a place, and making sure they stay respectful during each stop.
 
 ---
 
 ## 3. Problem or inconvenience
 
-**What may make this task difficult, confusing, unsafe, slow, or inconvenient?**  
-[Describe one concrete problem. You may use personal experience, general knowledge, public information, or a reasonable assumption. If it is an assumption, state that it is an assumption.]
+**What may make this task difficult, confusing, unsafe, slow, or inconvenient?** 
+Information placards at festival grounds are sparse or obscured by crowds, and live loudspeaker announcements can be hard to hear from a distance, leaving some visitors unaware of the significance of locations like St. Michael’s Cathedral.
 
 ---
 
 ## 4. Proposed digital solution
 
 **What digital tool would you propose?**  
-[Describe a mobile application, website, kiosk, dashboard, notification service, digital map, registration system, or another digital tool.]
+A location-aware, mobile web app named "Diyandi Walkthrough."
 
 **How would it help the intended users?**  
-[Explain how the solution responds to the problem you identified.]
+It provides an interactive map showing landmarks of important structures and areas, delivering mini-stories and etiquette tips as users approach each historical or cultural landmark.
 
 ---
 
@@ -44,8 +44,8 @@
 
 Describe **two specific actions** that users could perform using your proposed system.
 
-1. [Write the first user action here.]
-2. [Write the second user action here.]
+1. Follow a curated walking map that unlocks 1-minute cultural audio insights upon arriving at key festival sites.
+2. Access a Guide detailing proper spectator behavior and photography guidelines at sacred venues and during rituals.
 
 ---
 
@@ -53,15 +53,15 @@ Describe **two specific actions** that users could perform using your proposed s
 
 Identify **two qualities** that would make your proposed system useful. You may consider whether it should be easy to use, fast, reliable, safe, private, accessible, multilingual, low-data, clear, or available during high demand.
 
-### Quality 1: [Write a quality]
+### Quality 1: Cultural Respect and Inclusivity
 
 **Why does this matter to users?**  
-[Explain why this quality is important for your selected user group and situation.]
+It ensures visitors honor Iligan’s tri-people heritage (Christian, Higaonon, and Maranao) and view the rituals as living culture rather than a commercial spectacle.   
 
-### Quality 2: [Write a quality]
+### Quality 2: Low-Data / Offline Accessibility
 
 **Why does this matter to users?**  
-[Explain why this quality is important for your selected user group and situation.]
+Crowded walking routes suffer from heavy cellular network congestion, as well as Iligan officials utilizing signal jammers to ensure safety. Pre-downloading the walkthrough ensures users have a smooth time enjoying the festival.
 
 ---
 
@@ -69,7 +69,7 @@ Identify **two qualities** that would make your proposed system useful. You may 
 
 How could you determine whether your proposed solution actually helped users?
 
-[Examples: Ask users for feedback; observe whether users can complete a task more easily; compare the number of errors or complaints; measure task-completion time; check whether fewer people miss event updates; track whether users can locate venues successfully.]
+Collect feedback via a brief survey and a star rating within the app asking users whether the guided walkthrough improved their understanding of the celebration of Diyandi and helped them navigate the cultural landmarks of Iligan.
 
 ---
 
@@ -84,7 +84,7 @@ You may include **one screenshot** or reference image only if it does not contai
 -->
 
 **External sources used, if any:**  
-[Add links or citations here. If you did not use any external sources, write: None.]
+None
 
 ---
 
@@ -92,7 +92,7 @@ You may include **one screenshot** or reference image only if it does not contai
 
 Select **one** option below and complete the applicable details.
 
-- [ ] **No AI tools used.** I did not use any generative AI tool in preparing this submission.
+- [x] **No AI tools used.** I did not use any generative AI tool in preparing this submission.
 
 - [ ] **AI tools used.** I used the following AI tool(s): [Write tool name(s), e.g., ChatGPT, Gemini, Copilot].
 
@@ -114,4 +114,4 @@ Select **one** option below and complete the applicable details.
 
 I confirm that this work is based primarily on my own observation, experience, and reasoning. Any external sources or tools used have been acknowledged above.
 
-**Name:** [Write your full name]
+**Name:** Jeric I. Balos
