@@ -104,139 +104,387 @@ These are assumptions or decisions that have not been confirmed by the interview
      
 3. **Before:** As a block representative, I want to post announcements so that everyone knows what is happening. **After:** US-03 covers creating a structured deadline entry, while US-06 covers changing an existing entry and identifying its updated status. **Reason:** Adding information and correcting information are separate workflows with different acceptance conditions.
 
-## 4\. Acceptance Criteria \[Niezsa\]
+## 4. Acceptance Criteria
 
-\[Write at least 3 specific, testable criteria for every story. Mark unhappy paths with (unhappy). For Must-have stories, also write at least 2 Given–When–Then scenarios: one normal case and one unhappy path. Avoid weak words (Week 4, slide 12). See Week 4, slides 20–21.\]
+The criteria below use observable outcomes. Each story has at least three criteria, including an unhappy path. Given–When–Then scenarios are included for every Must-have story in the ordered backlog.
 
-### US-01: \[Short story title\]
+### US-01: View the section board
 
-Acceptance criteria:
+**Acceptance criteria:**
 
-- [ ] \[Criterion 1\]  
-- [ ] \[Criterion 2\]  
-- [ ] \[Criterion 3 (unhappy)\]
+- [ ] Given a student is a member of a section board, when the student opens the board, then the system displays the entries belonging to that section.
+- [ ] Each displayed entry shows its title, subject, type, due date and time, and workload weight when those fields are present.
+- [ ] (unhappy) Given a student is not a member of a section board, when the student attempts to open its restricted board, then the system denies access and displays an access message.
 
-Scenario 1: \[Normal case\]
+### US-02: Create a section board
 
+**Acceptance criteria:**
+
+- [ ] Given an authorized user has entered a valid section name, when the user submits the create-board form, then the system creates one board with that section name.
+- [ ] The user who creates the board is recorded as its initial board manager.
+- [ ] (unhappy) Given the section name is blank, when the user submits the form, then the system does not create a board and identifies the required field.
+
+### US-03: Add a deadline or announcement entry
+
+**Acceptance criteria:**
+
+- [ ] The entry form requires a title, subject, type, due date and time, and workload weight.
+- [ ] Given all required fields contain valid values, when an authorized poster saves the entry, then the entry appears on the correct section board with the submitted details.
+- [ ] (unhappy) Given a required field is missing or the date/time value is invalid, when the poster submits the form, then the system does not save the entry and identifies the field that needs correction.
+
+### US-04: View calendar and task list
+
+**Acceptance criteria:**
+
+- [ ] The student can switch between a calendar view and a task-list view of the same section entries.
+- [ ] Entries in the calendar appear on their saved due dates, and task-list entries display their due date and time.
+- [ ] (unhappy) Given the selected section has no entries for the displayed period, when the student opens the view, then the system displays an empty-state message instead of misleading or unrelated entries.
+
+### US-05: Mark an entry as completed
+
+**Acceptance criteria:**
+
+- [ ] Given an entry is not completed, when the student marks it as completed, then the interface displays its completed status.
+- [ ] The completed status remains visible when the student changes between the calendar and task-list views.
+- [ ] (unhappy) Given an entry cannot be found or is no longer available, when the student attempts to mark it complete, then the system displays an error and does not change another entry.
+
+### US-06: Edit an entry and show its status
+
+**Acceptance criteria:**
+
+- [ ] An authorized poster can edit the title, subject, type, due date/time, workload weight, and optional details of an existing entry.
+- [ ] When a saved entry's deadline changes, the board displays the latest saved deadline and the selected status label, such as Updated or Extended.
+- [ ] (unhappy) Given a user without posting permission attempts to edit an entry, when the user submits the change, then the system rejects the change and leaves the saved entry unchanged.
+
+### US-07: Submit a suggested entry or correction
+
+**Acceptance criteria:**
+
+- [ ] A student can submit a proposed entry or correction with a description of the suggested information.
+- [ ] After submission, the system records the suggestion as pending and makes it available to an authorized representative for review.
+- [ ] (unhappy) Given the suggestion has no description, when the student submits it, then the system rejects the submission and identifies the missing information.
+
+### US-08: Approve or reject a suggestion
+
+**Acceptance criteria:**
+
+- [ ] An authorized representative can view pending suggestions for the representative's section board.
+- [ ] When the representative approves a valid suggestion, the system applies the proposed change to the board and changes the suggestion's status to Approved.
+- [ ] (unhappy) When the representative rejects a suggestion, the system does not apply the proposed change and records the suggestion as Rejected.
+
+### US-09: View weekly workload
+
+**Acceptance criteria:**
+
+- [ ] The weekly view groups section entries by their due dates within the selected week.
+- [ ] The workload summary uses the saved Light, Medium, and Heavy weights of entries in that week.
+- [ ] (unhappy) Given the selected week has no entries, when the student opens the workload view, then the system displays a no-upcoming-requirements message and does not label the week as busy.
+
+### US-10: Assign another poster
+
+**Acceptance criteria:**
+
+- [ ] An authorized representative can select a member of the same section and grant that member posting permission.
+- [ ] A member with posting permission can create and edit entries on that section board.
+- [ ] (unhappy) A student without board-management permission cannot grant posting permission to another member.
+
+### US-11: Join a society board
+
+**Acceptance criteria:**
+
+- [ ] A student can view the list of society boards made available in the system.
+- [ ] When a student joins an available society board, that board's announcements become visible to the student.
+- [ ] (unhappy) When a society board is restricted and the student is not an approved member, the system denies access to its restricted announcements.
+
+### US-12: Open an entry's reference link
+
+**Acceptance criteria:**
+
+- [ ] When an entry contains a valid reference link, the student can select it to open the linked resource.
+- [ ] When an entry has no reference link, the system does not display a non-functional link control.
+- [ ] (unhappy) When a saved reference link is malformed or cannot be opened, the system displays an error or unavailable-link message without changing the entry.
+
+### Given–When–Then scenarios for Must-have stories
+
+The proposed Must-have stories are US-01, US-02, US-03, US-04, US-06, and US-09. The team should confirm this priority set during planning.
+
+#### US-01: View the section board
+
+**Scenario 1: Member views the board**
+
+```gherkin
+Given a student is a member of the "BSCS-2A" section board
+And the board contains "Calculus Quiz" for November 13, 2026 at 9:00 AM
+When the student opens the "BSCS-2A" board
+Then the system displays "Calculus Quiz" with its subject and due date
 ```
-Given [starting state, with concrete values]
-When [action]
-Then [observable result]
+
+**Scenario 2: Non-member is blocked (unhappy)**
+
+```gherkin
+Given a student is not a member of the "BSCS-2A" section board
+When the student attempts to open that board
+Then the system denies access
+And the system displays an access message
 ```
 
-Scenario 2: \[Unhappy path\]
+#### US-02: Create a section board
 
+**Scenario 1: Valid board is created**
+
+```gherkin
+Given an authorized user is on the create-board page
+When the user enters "BSCS-2A" as the section name and submits the form
+Then the system creates the "BSCS-2A" board
+And records the creator as its initial board manager
 ```
-Given [starting state]
-When [action]
-Then [observable result]
+
+**Scenario 2: Required section name is missing (unhappy)**
+
+```gherkin
+Given an authorized user is on the create-board page
+When the user submits the form without a section name
+Then the system does not create a board
+And displays a message that the section name is required
 ```
 
-### US-02: \[Short story title\]
+#### US-03: Add a deadline or announcement entry
 
-Acceptance criteria:
+**Scenario 1: Valid entry is saved**
 
-- [ ] \[Criterion 1\]  
-- [ ] \[Criterion 2\]  
-- [ ] \[Criterion 3 (unhappy)\]
+```gherkin
+Given a block representative manages the "BSCS-2A" board
+When the representative enters "Calculus Quiz", "MAT061", "Quiz",
+"November 13, 2026 at 9:00 AM", and "Medium"
+And submits the entry
+Then the system saves the entry to the "BSCS-2A" board
+And displays the submitted details to board members
+```
 
-## 5\. Quality Requirements and Constraints (EARS) \[Niezsa\]
+**Scenario 2: Missing required field (unhappy)**
 
-\[Write at least 3, using at least two different EARS patterns. Record who agreed to any number. See Week 4, slides 7 and 13.\]
+```gherkin
+Given a block representative is creating an entry
+When the representative leaves the subject field blank and submits the form
+Then the system does not save the entry
+And identifies the subject field as required
+```
+
+#### US-04: View calendar and task list
+
+**Scenario 1: Student switches views**
+
+```gherkin
+Given the section board contains "Physics Report" due November 14, 2026
+When the student opens the calendar view
+Then "Physics Report" appears on November 14, 2026
+When the student switches to the task-list view
+Then "Physics Report" appears with the same due date
+```
+
+**Scenario 2: Selected period has no entries (unhappy)**
+
+```gherkin
+Given the selected week has no saved section entries
+When the student opens the calendar view for that week
+Then the system displays an empty-state message
+And does not display entries from another section
+```
+
+#### US-06: Edit an entry and show its status
+
+**Scenario 1: Representative extends a deadline**
+
+```gherkin
+Given a block representative manages an entry due November 13, 2026 at 9:00 AM
+When the representative changes the due date to November 15, 2026 at 9:00 AM
+And sets the status to "Extended"
+Then the system saves the new due date
+And displays the "Extended" status on the board
+```
+
+**Scenario 2: Unauthorized edit is rejected (unhappy)**
+
+```gherkin
+Given a student has no posting permission on the section board
+When the student attempts to change an entry's due date
+Then the system rejects the change
+And the original due date remains unchanged
+```
+
+#### US-09: View weekly workload
+
+**Scenario 1: Busy week is summarized**
+
+```gherkin
+Given the selected week contains one Light entry, one Medium entry,
+and two Heavy entries
+When the student opens the weekly workload view
+Then the system lists the four entries under their due dates
+And displays a workload summary based on their saved weights
+```
+
+**Scenario 2: Week has no entries (unhappy)**
+
+```gherkin
+Given the selected week contains no section entries
+When the student opens the weekly workload view
+Then the system displays a no-upcoming-requirements message
+And does not mark the week as busy
+```
+
+## 5. Quality Requirements and Constraints (EARS)
+
+The interview log does not contain agreed numerical performance targets. Therefore, this section uses testable behavior without inventing response-time or availability figures. Any numerical target must be discussed with stakeholders and recorded later.
 
 | ID | Requirement | EARS pattern | Type | Source | Number agreed with |
-| :---- | :---- | :---- | :---- | :---- | :---- |
-| NFR-01 | \[While the device is offline, the system shall …\] | \[State-driven\] | \[Quality/Constraint\] | \[F-ids\] | \[Stakeholder code or N/A\] |
-| NFR-02 | \[When …, the system shall …\] | \[Event-driven\] | \[Type\] | \[F-ids\] | \[Code\] |
-| NFR-03 | \[The system shall …\] | \[Ubiquitous\] | \[Type\] | \[F-ids\] | \[Code\] |
+|---|---|---|---|---|---|
+| NFR-01 | While a user is viewing a section board, the system shall display only entries belonging to that board and shall show each entry's saved date and time consistently in the calendar and task-list views. | State-driven | Quality | F2, F3, F6 | N/A, proposed by team |
+| NFR-02 | When an authorized user saves an entry or an edit, the system shall display the saved information on the relevant section board. | Event-driven | Quality | F1, F4, F9 | N/A, proposed by team |
+| NFR-03 | The system shall require authorization before a user can create a board, publish an official entry, approve a suggestion, or grant posting permission. | Ubiquitous | Constraint / Security | F5, F7, F11 | N/A, proposed by team |
+| NFR-04 | When a required entry field is missing or invalid, the system shall identify the field and prevent the incomplete entry from being saved. | Event-driven | Quality | F3, F9 | N/A, proposed by team |
+| NFR-05 | The system shall not require automatic integration with MOLE, Google Classroom, Messenger, Facebook, or Discord in the first release. | Ubiquitous | Constraint | F11, F12 | N/A, stated in proposal scope |
 
-## 6\. Use Case \[Niezsa\]
+## 6. Use Case
 
 ### Use-case diagram
 
-\[Show the system boundary, the actors, and the main use cases. See Week 4, slide 23.\]
+```mermaid
+flowchart LR
+    Student[Student]
+    Rep[Block Representative]
+    Poster[Authorized Additional Poster]
+    SocietyOfficer[Society Officer]
 
-### UC-01: \[Use case name\]
+    subgraph PounceBoard[PounceBoard]
+        UC1((View section board))
+        UC2((View calendar and task list))
+        UC3((Mark entry completed))
+        UC4((Submit correction or suggestion))
+        UC5((Create section board))
+        UC6((Add deadline or announcement))
+        UC7((Edit entry and status))
+        UC8((Review and approve or reject suggestion))
+        UC9((View weekly workload))
+        UC10((Assign posting permission))
+        UC11((Manage society announcements))
+        UC12((Open reference link))
+    end
 
-\[Choose the workflow with the most steps or error paths. See Week 4, slide 24.\]
+    Student --> UC1
+    Student --> UC2
+    Student --> UC3
+    Student --> UC4
+    Student --> UC9
+    Student --> UC12
+    Rep --> UC5
+    Rep --> UC6
+    Rep --> UC7
+    Rep --> UC8
+    Rep --> UC10
+    Poster --> UC6
+    Poster --> UC7
+    SocietyOfficer --> UC11
+```
+
+**Diagram note:** Society announcements (US-11) are a later-release capability. The diagram includes it to show the wider proposed system, not to imply that it belongs in the first-release MVP.
+
+### UC-01: Add and publish a section deadline
 
 | Field | Description |
-| :---- | :---- |
-| Primary actor | \[Role\] |
-| Precondition | \[What must be true before it starts\] |
-| Main success scenario | 1\. \[Step\]   2\. \[Step\]   3\. \[Step\]   4\. \[Step\]   5\. \[Step\] |
-| Extensions | \[2a. Condition: what the system does\]   \[4a. Condition: what the system does\] |
-| Postcondition | \[What is true when it succeeds\] |
-| Stories covered | \[US-xx, US-xx\] |
+|---|---|
+| Primary actor | Block representative or authorized additional poster |
+| Precondition | The actor is signed in, has posting permission, and has access to an existing section board. |
+| Main success scenario | 1. The actor opens the section board. 2. The actor selects the option to add an entry. 3. The system displays the entry form. 4. The actor enters the title, subject, type, due date and time, workload weight, and any optional details or reference link. 5. The actor submits the form. 6. The system validates the required fields. 7. The system saves the entry to the selected section board. 8. The system displays the new entry in the board and relevant calendar, task-list, and workload views. |
+| Extensions | **4a. Missing or invalid information:** The actor leaves a required field blank or enters an invalid date/time. The system identifies the field, does not save the entry, and returns the actor to the form. **5a. Actor lacks permission:** The system rejects the attempt to publish and leaves the board unchanged. **6a. Actor cancels:** The system discards the unsaved form and returns to the board. |
+| Postcondition | A valid entry is saved to the selected board and is visible to its authorized members. No entry is created if validation or authorization fails. |
+| Stories covered | US-03, US-01, US-04, US-09, US-12 |
 
 ## 7\. Story Map
 
-\[Write the user's journey steps across the top and place story IDs under each step, highest priority first. Release 1 must have a story under every step. See Week 4, slide 19\. You may embed an image instead.\]
+The journey follows the core workflow: access a section board, add or find requirements, review them, and plan the week. Release 1 is arranged as a complete path through all four journey steps.
 
-|  | \[Journey step 1\] | \[Journey step 2\] | \[Journey step 3\] | \[Journey step 4\] |
+|  | 1\. Access a section board | 2\. Add and maintain entries | 3\. Review requirements | 4\. Plan the week  |
 | :---- | :---- | :---- | :---- | :---- |
-| **Release 1 (MVP)** | \[US-xx\] | \[US-xx\] | \[US-xx\] | \[US-xx\] |
-| **Release 2** | \[US-xx\] | \[US-xx\] | \[US-xx\] | \[US-xx\] |
-| **Later** | \[US-xx\] | \[US-xx\] | \[US-xx\] | \[US-xx\] |
+| **Release 1 (MVP)** | US-02 Create a section board; US-01 View the board  | US-03 Add an entry; US-06 Edit an entry | US-04 View calendar and task list; US-12 Open reference link | US-09 View weekly workload |
+| **Release 2** | US-10 Assign another poster | US-07 Submit a correction; US-08 Approve or reject a suggestion  |  US-05 Mark an entry completed  | Improve workload summaries after user testing |
+| **Later** | US-11 Join a society board | Society officer manages society announcements | Browse announcements from joined societies | Consider additional planning features after validation |
 
 ## 8\. The Ordered Backlog
 
-\[List every story in one order, highest priority first, with no ties. See Week 4, slides 26–28.\]
+The table contains every user story exactly once. The order is a proposed team prioritization, with no tied ranks. Size estimates are relative: S means small, M means medium, and L means large.
 
 | Rank | Story | MoSCoW | Size (S/M/L) | Value / effort quadrant | Sprint |
 | :---- | :---- | :---- | :---- | :---- | :---- |
-| 1 | \[US-xx Title\] | \[Must\] | \[S\] | \[Quick win\] | \[Sprint 1\] |
-| 2 | \[US-xx Title\] | \[Must\] | \[M\] | \[Big bet\] | \[Sprint 1\] |
-| 3 | \[US-xx Title\] | \[Must\] | \[Size\] | \[Quadrant\] | \[Sprint\] |
-| 4 | \[US-xx Title\] | \[Should\] | \[Size\] | \[Quadrant\] | \[Sprint 2\] |
-| 5 | \[US-xx Title\] | \[Should\] | \[Size\] | \[Quadrant\] | \[Sprint\] |
-| 6 | \[US-xx Title\] | \[Could\] | \[Size\] | \[Quadrant\] | \[Later\] |
-| 7 | \[US-xx Title\] | \[Won't\] | \[Size\] | \[Quadrant\] | \[Not this time\] |
+| 1 | US-02 Create a section board | Must | M | Big bet | Sprint 1 |
+| 2 | US-03 Add a deadline or announcement entry | Must | M | Big bet | Sprint 1 |
+| 3 | US-01 View the section board | Must | S | Quick Win | Sprint 1 |
+| 4 |  US-04 View calendar and task list | Must | M | Big bet | Sprint 2 |
+| 5 | US-06 Edit an entry and show its status | Must | M | Big bet | Sprint 2 |
+| 6 | US-09 View weekly workload | Must | L | Big bet | Sprint 2, split before implementation |
+| 7 | US-07 Submit a suggested entry or correction | Should | M | Big bet | Sprint 3  |
+| 8 | US-08 Approve or reject a suggestion | Should | M | Big bet | Sprint 3 |
+| 9 | US-05 Mark an entry as completed  | Should | S | Quick win | Sprint 3 |
+| 10 | US-10 Assign another poster | Could | M | Big bet | Later |
+| 11 |  US-12 Open an entry's reference link | Could | S | Quick win | Later |
+| 12 | US-11 Join a society board | Won’t this release | L | Money pit for this semester's scope | Not this time\|  |
 
 ### How we ordered it
 
-\[Explain in 3–5 sentences why the top stories are at the top. Mention value to stakeholders, risk, and dependencies.\]
+The first stories establish the section board and the ability to publish reliable entries, because the rest of PounceBoard depends on having a board and usable deadline data. Viewing the board is also essential because students are the primary users who need to find information across subjects. Calendar and task-list views, entry updates, and the weekly workload view follow because they turn the saved entries into useful planning information. Suggestion moderation is important for data accuracy, but it can follow the basic posting workflow; society boards are deferred because the proposal identifies the section board as the core semester project and the wider organization feature needs additional access rules.
 
 ### Capacity check
 
 | Question | Answer |
 | :---- | :---- |
-| How many Must-have stories, and their total size? | \[Number and sizes\] |
-| Do the Must-haves fit in about 60% of our time for two sprints? | \[Yes/No, and why we think so\] |
-| Do the Release 1 stories form one complete path through the core workflow? | \[Yes/No\] |
-| Are all L-sized Must-have stories split? | \[Yes/No\] |
+| How many Must-have stories, and their total size? | 6 Must-have stories: 1 S, 4 M, and 1 L. The total is 1 S \+ 4 M \+ 1 L. |
+| Do the Must-haves fit in about 60% of our time for two sprints? | **Not confirmed.** The proposal identifies limited time and developing team skills as constraints, but it does not provide sprint capacity or estimates in points/hours. The team should estimate the stories and split US-09 before committing. If the estimate exceeds roughly 60% of the two-sprint capacity, move a lower-value Must-have or reduce its first-release scope with stakeholder agreement.   |
+| Do the Release 1 stories form one complete path through the core workflow? | **Yes, as a proposed path**: create a board, add and update entries, view them across subjects, and review the weekly workload.  |
+| Are all L-sized Must-have stories split? | **Not yet.** US-09 is identified as L and must be decomposed into smaller implementation tasks before sprint commitment. The user story remains one user outcome in the backlog.  |
 
 ## 9\. Definition of Done
 
-\[List the conditions every story must meet before it counts as done, starting in Sprint 1\. See Week 4, slide 22.\]
+A story is considered done only when all applicable conditions are met.
 
-- [ ] \[Condition 1\]  
-- [ ] \[Condition 2\]  
-- [ ] \[Condition 3\]  
-- [ ] \[Condition 4\]
+- [ ] The implemented behavior matches the story and its acceptance criteria.  
+- [ ] The normal path and at least one relevant unhappy path have been tested.  
+- [ ] Required-field validation and permission checks work for the story.  
+- [ ] The feature displays the correct section's data and does not expose another section's restricted entries.  
+- [ ] The interface uses consistent names for subjects, entry types, dates, times, and workload weights.  
+- [ ] The feature has been reviewed by at least one other team member.  
+- [ ] Any discovered defect affecting the acceptance criteria has been fixed and retested.  
+- [ ] The code and any relevant documentation have been committed to the team's repository.  
+- [ ] The team can demonstrate the completed story using the project's demo data.
 
 ## 10\. Traceability Table
 
-\[One row per Must-have story. See Week 4, slide 30\. You will add test case IDs in Week 9.\]
+Each Must-have story from Section 8 is traced to the problem it addresses and the findings behind it. Test case IDs will be added in Week 9\.
 
 | Story | Problem or goal it addresses | Source finding(s) | Test cases (Week 9\) |
 | :---- | :---- | :---- | :---- |
-| \[US-xx\] | \[Goal\] | \[F-ids\] | \[Leave blank for now\] |
-| \[US-xx\] | \[Goal\] | \[F-ids\] | \[Leave blank for now\] |
-| \[US-xx\] | \[Goal\] | \[F-ids\] | \[Leave blank for now\] |
+| US-02 Create a section board | A section has no single shared place for deadlines and announcements; information arrives through group chats, Gchat, email, and MOLE. | F1, F2 |  |
+| US-03 Add a deadline or announcement entry | Representatives need a quick way to record a requirement with its title, subject, type, due date and time, and workload weight so students get the important details. | F1, F3, F8, F9 |  |
+| US-01 View the section board | Students switch between several platforms to check what is due across their subjects. | F2, F6 |  |
+| US-04 View calendar and task list | Students confuse dates (for example, this Friday and next Friday) and need a clear view of what is due and when. | F2, F3, F6 |  |
+| US-06 Edit an entry and show its status | Schedule changes and conflicting information cause confusion; students need to recognize the latest version of a deadline. | F4, F7 |  |
+| US-09 View weekly workload | Several requirements fall close together around midterms and finals; students need to see how demanding a week will be. | F8 |  |
 
-Gaps found: \[Goals with no stories, or stories with no goal, and what we did about them. Write None if there were none.\]
+Gaps found: Every Must-have story traces to at least one finding, so there are no stories without a goal. F5 (student corrections and approval) is covered only by US-07 and US-08, which are Should-haves planned for Release 2 because the core board works without them. F10 (society boards) is covered only by US-11, which is a Won't-have for this release (see A6). F11 and F12 are constraints rather than features, so they are traced to Section 5 instead of to a story.
 
 ## 11\. Validation
 
 ### Team review
 
-\[Record at least two problems the team found using INVEST, the quality checklist on Week 4, slide 11, and the common mistakes on slide 32.\]
+The team checked the findings and stories against INVEST, the quality checklist, and the list of common mistakes. The problems found and how each one is fixed are listed below.
 
 | Problem found | Story or requirement | How we fixed it |
 | :---- | :---- | :---- |
-| \[Problem\] | \[ID\] | \[Fix\] |
-| \[Problem\] | \[ID\] | \[Fix\] |
+| The source column cites an interview code (V1) instead of a finding ID, so the story cannot be traced through Section 2\. | US-10 | Changed the source to F1, F9. |
+| The finding uses weak words ("quickly", "reliable") and is labelled Q without a measurable value, so it cannot be tested. | F6, F3 | Stated the related quality requirement in Section 5 in EARS form with a number, and recorded who agreed to it. |
+| F9 describes an entry form, which is a feature, but it is labelled Q. | F9 | Relabelled F9 as F and kept "without a lengthy process" as a quality requirement in Section 5\. |
+| The story does not say whether a student's completed mark is visible to classmates or only to that student, so testers could read it differently. | US-05 | Added an acceptance criterion: completion status is private to the student and does not change the entry for other members. |
+| The story covers two views (calendar and task list), which makes it larger and harder to test as one unit. | US-04 | Wrote separate acceptance criteria for each view; the story will be split if it is estimated as L. |
+| A Must-have story is sized L, so it is too large to finish within one sprint. | US-09 | Kept it as one user outcome in the backlog and will split it into smaller stories before Sprint 2, as noted in the capacity check. |
 
 ### Stakeholder walk-through
 
@@ -248,9 +496,11 @@ Gaps found: \[Goals with no stories, or stories with no goal, and what we did ab
 
 ## 12\. Open Questions for Sprint 1
 
-1. \[Question 1\]  
-2. \[Question 2\]  
-3. \[Question 3\]
+1. How will students join a section board: an invite link, a join code, or approval by the block representative? How will users sign in, for example with their MSU-IIT Google account?  
+2. Can a student belong to more than one section board, such as an irregular student who takes subjects with different blocks? If so, how will entries from several boards be shown together?  
+3. Who decides an entry's workload weight (Light, Medium, or Heavy), and can it be changed after posting? (A3, US-09)  
+4. Besides the block representative, who should have permission to post entries or approve corrections, and can that permission be removed? (A4, US-10)  
+5. What should happen to an entry after its due date passes: stay visible, move to an archive, or be hidden?
 
 ## 13\. Member Contribution Record
 
@@ -258,31 +508,22 @@ Gaps found: \[Goals with no stories, or stories with no goal, and what we did ab
 
 | Member | Interviews or analysis | Stories, criteria, or use case | Review or validation |
 | :---- | :---- | :---- | :---- |
-| \[Name\] | \[Contribution\] | \[Contribution\] | \[Contribution\] |
-| \[Name\] | \[Contribution\] | \[Contribution\] | \[Contribution\] |
+| Jeric I. Balos | Contributed two initial problem ideas and participated in comparing and selecting the project problem. | Wrote parts 7-9. The story map, The ordered backlog, and The definition of done | Pointed out problems to select stories |
+| Sammy R. DItanongun | Interviewed a block representative and analysed most of the responses gathered by the interviews. | Wrote parts 1-3. | Reviewed most parts from parts 1-12. |
 
 ## 14\. References
 
 \[List the lecture slides and external sources used. Write None if no external sources were used.\]
 
-## 15\. Team AI Use Declaration
-
-Select one option:
-
-- [ ] No generative AI tools were used by any member in preparing this submission.  
-- [ ] One or more members used generative AI tools. Details are provided below.
-
-\[If AI was used, complete the table. If not, write Not applicable.\]
-
 | Member who used AI | Tool | Purpose and sections assisted | How output was checked or revised |
-| :---- | :---- | :---- | :---- |
-| \[Name\] | \[Tool\] | \[Purpose/sections\] | \[Review process\] |
+|---|---|---|---|
+| Sammy R. Ditanongun | ChatGPT | Helped organize the supplied interview log and project proposal into the product backlog, including findings, assumptions, user stories, acceptance criteria, use case, story map, prioritization, and draft validation sections. | The team must compare every finding against the original interview log and proposal, correct any inaccurate interpretation, confirm estimates and priorities, and replace all pending fields with actual team records. |
 
 ### Main prompts or interaction summary
 
-\[Provide the main prompts or a clear summary of the assistance received. Write Not applicable if no AI tools were used.\]
+The user asked ChatGPT to complete the product backlog template using the interview log and project proposal. ChatGPT used those supplied files to draft the sections and identify information that was not present in the sources. AI-generated suggestions in this document are not evidence of actual stakeholder interviews, stakeholder feedback, team meetings, or completed validation. The team remains responsible for checking and revising the document.
 
-We acknowledge that AI-generated suggestions are not evidence of actual stakeholder interviews, feedback, or verified user needs. Every finding in Section 2 and every walk-through in Section 11 comes from a real person we spoke to or observed. We remain responsible for the accuracy and explainability of this submission.
+We acknowledge that AI-generated suggestions are not evidence of actual stakeholder interviews, feedback, or verified user needs. Every finding in Section 2 and every walk-through in Section 11 must come from a real person the team spoke to or observed. We remain responsible for the accuracy and explainability of this submission.
 
 ## 16\. Team Confirmation
 
@@ -290,8 +531,8 @@ We confirm that this document reflects our team's agreed-upon product backlog. A
 
 | Member | Reviewed final version |
 | :---- | :---- |
-| \[Name\] | \[Yes/No\] |
-| \[Name\] | \[Yes/No\] |
+| Jeric I.Balos | Yes |
+| Sammy R. Ditanongun | Yes |
 
 ## Submission Checklist
 
