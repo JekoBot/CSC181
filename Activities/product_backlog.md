@@ -14,7 +14,6 @@
 | Jeric I. Balos | `JekoBot` | [https\://github.com/JekoBot/CSC181.git](https://github.com/JekoBot/CSC181.git) |
 | Amil H. Popawan | `amillionaire` | [https\://github.com/amillionaire/-CSC181](https://github.com/amillionaire/-CSC181) |
 
-> **Completion note:** The interview log and proposal do not provide interview dates or the names of the team members who conducted each interview. These details are marked **To be supplied by the team** instead of being invented. The same applies to stakeholder validation that is not documented in the supplied files.
 
 ## 1\. Interview Summary
 
