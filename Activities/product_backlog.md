@@ -14,6 +14,7 @@
 | Jeric I. Balos | `JekoBot` | [https\://github.com/JekoBot/CSC181.git](https://github.com/JekoBot/CSC181.git) |
 | Amil H. Popawan | `amillionaire` | [https\://github.com/amillionaire/-CSC181](https://github.com/amillionaire/-CSC181) |
 
+> **Completion note:** The interview log and proposal do not provide interview dates or the names of the team members who conducted each interview. These details are marked **To be supplied by the team** instead of being invented. The same applies to stakeholder validation that is not documented in the supplied files.
 
 ## 1\. Interview Summary
 
@@ -514,6 +515,11 @@ The team checked the findings and stories against INVEST, the quality checklist,
 
 \[List the lecture slides and external sources used. Write None if no external sources were used.\]
 
+## 15. Team AI Use Declaration
+
+- [ ] No generative AI tools were used by any member in preparing this submission.
+- [x] One or more members used generative AI tools. Details are provided below.
+
 | Member who used AI | Tool | Purpose and sections assisted | How output was checked or revised |
 |---|---|---|---|
 | Sammy R. Ditanongun | ChatGPT | Helped organize the supplied interview log and project proposal into the product backlog, including findings, assumptions, user stories, acceptance criteria, use case, story map, prioritization, and draft validation sections. | The team must compare every finding against the original interview log and proposal, correct any inaccurate interpretation, confirm estimates and priorities, and replace all pending fields with actual team records. |
@@ -523,6 +529,10 @@ The team checked the findings and stories against INVEST, the quality checklist,
 The user asked ChatGPT to complete the product backlog template using the interview log and project proposal. ChatGPT used those supplied files to draft the sections and identify information that was not present in the sources. AI-generated suggestions in this document are not evidence of actual stakeholder interviews, stakeholder feedback, team meetings, or completed validation. The team remains responsible for checking and revising the document.
 
 We acknowledge that AI-generated suggestions are not evidence of actual stakeholder interviews, feedback, or verified user needs. Every finding in Section 2 and every walk-through in Section 11 must come from a real person the team spoke to or observed. We remain responsible for the accuracy and explainability of this submission.
+
+## 16\. Team Confirmation
+
+We confirm that this document reflects our team's agreed-upon product backlog. All members listed below reviewed the final version, and each member will upload the same Markdown file to their personal CSC181 repository.
 
 ## 16\. Team Confirmation
 
